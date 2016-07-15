@@ -1,0 +1,4 @@
+<%= form_for :pessoas , :url => {:controller => 'csv', :action => 'buscar_pessoas'}  do |f| %>
+  Selecione: <%= f.file_field :arquivo %><br />
+  <%= f.submit %>
+<% end %>

@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :usuarios
   resources :empresas
   root to: "empresas#index"
+  get 'csv/index'
+  post 'csv/buscar_pessoas'
+  post 'csv/criar_pdf'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
