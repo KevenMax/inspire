@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inspire</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+<div class="navbar-header">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    
+      <li class="navbar-brand">Painel do usuário</li>
+</div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav navbar-right">
+	<% if usuario_signed_in? %>
+	  <li class="navbar-brand">Logado como <strong><%= current_usuario.email %></strong></li>
+	 <a> <%= link_to 'Editar perfil', edit_usuario_registration_path, :class => 'btn btn-default' %></a> 
+	  <a><%= link_to "Sair", destroy_usuario_session_path, method: :delete, :class => 'btn btn-default'  %>
+	<% else %> </a>
+	  <a><%= link_to "Cadastrar-se", new_usuario_registration_path, :class => 'btn btn-default'  %></a> 
+	 <a> <%= link_to "Entrar", new_usuario_session_path, :class => 'btn btn-default'  %></a>
+    
+      <% end %>
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+  
+
+<%= yield %>
+
+</body>
+</html>
