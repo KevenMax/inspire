@@ -7,12 +7,12 @@
   <div class="form-inline">
   <div class="field">
     <%= f.label 'Email:' %><br />
-    <%= f.email_field :email, autofocus: true, placeholder: "Digite seu email", :class => 'form-control' %>
+    <%= f.email_field :email, autofocus: true, placeholder: "Digite seu email", :class => 'form-control', :required => true %>
   </div>
 
   <div class="field">
     <%= f.label 'Senha:' %><br />
-    <%= f.password_field :password, autocomplete: "off",placeholder: "Digite sua senha",:class => 'form-control' %>
+    <%= f.password_field :password, autocomplete: "off",placeholder: "Digite sua senha",:class => 'form-control',:required => true %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
