@@ -3,9 +3,23 @@
 one:
   nome: MyString
   cpf: MyString
+  rg: MyString
+  telefone: MyString
+  endereco: MyString
   cep: MyString
+  valor: MyString
+  vencimento: MyString
+  cedente: MyString
+  cnpj: MyString
 
 two:
   nome: MyString
   cpf: MyString
+  rg: MyString
+  telefone: MyString
+  endereco: MyString
   cep: MyString
+  valor: MyString
+  vencimento: MyString
+  cedente: MyString
+  cnpj: MyString

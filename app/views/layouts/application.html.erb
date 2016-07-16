@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Inspire</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+ <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -21,15 +21,32 @@
 
       <ul class="nav navbar-nav navbar-right">
 	<% if usuario_signed_in? %>
-	  <li class="navbar-brand">Logado como <strong><%= current_usuario.email %></strong></li>
-	 <a> <%= link_to 'Editar perfil', edit_usuario_registration_path, :class => 'btn btn-default' %></a> 
-	  <a><%= link_to "Sair", destroy_usuario_session_path, method: :delete, :class => 'btn btn-default'  %>
-	<% else %> </a>
-	  <a><%= link_to "Cadastrar-se", new_usuario_registration_path, :class => 'btn btn-default'  %></a> 
-	 <a> <%= link_to "Entrar", new_usuario_session_path, :class => 'btn btn-default'  %></a>
+  <div class="dropdown">
+    <li class="navbar-brand">Logado como <strong><%= current_usuario.email %></strong></li>
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Opções
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    
+    <li><a><%= link_to 'Tabela', csv_tabela_path, :class => 'btn btn-default' %> </a></li>
+    <li><a href="#">Outra ação</a></li>
+    <li><a href="#">Algo mais aqui</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Link separado</a></li>
+  </ul>
+</div>
+    <a><%= link_to 'Enviar CSV', csv_index_path, :class => 'btn btn-default' %> </a> 
+  
+
+   <a> <%= link_to 'Editar perfil', edit_usuario_registration_path, :class => 'btn btn-default' %></a> 
+    <a><%= link_to "Sair", destroy_usuario_session_path, method: :delete, :class => 'btn btn-default'  %>
+  <% else %> </a>
+    <a><%= link_to "Cadastrar-se", new_usuario_registration_path, :class => 'btn btn-default'  %></a> 
+   <a> <%= link_to "Entrar", new_usuario_session_path, :class => 'btn btn-default'  %></a>
     
       <% end %>
-        
+  
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

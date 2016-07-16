@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'csv/index'
   post 'csv/buscar_pessoas'
   post 'csv/criar_pdf'
+  get 'csv/tabela'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

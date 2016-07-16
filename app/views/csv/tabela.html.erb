@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <center>  
 <h2>Cadastros (<%= "#{@info.count}"%>)</h2>
 </center>
@@ -38,9 +40,8 @@
 </table>
 
 <br>
-<center>
+<h1>CSV ENVIADO!</h1>
 <p>Crie os pdf's:</p>
 <%= form_for :pdf , :url => {:controller => 'csv', :action => 'criar_pdf'}  do |f| %>
   <%= f.submit %>
 <% end %>
-</center>
