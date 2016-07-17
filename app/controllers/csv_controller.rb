@@ -5,7 +5,7 @@ class CsvController < ApplicationController
 	require "prawn/table"
 
 	def index
-
+		@empresa = Empresa.all
 	end
 
 	def tabela
@@ -13,11 +13,12 @@ class CsvController < ApplicationController
 	end
 
 	def buscar_pessoas
+		id = params[:pessoas][:empresa_id]
 		file = params[:pessoas][:arquivo].tempfile
 		subir = CSV.table(file)
 
 		subir.each do |row|
-			pessoa = Pessoa.create(nome: row.fetch(:nome),cpf: row.fetch(:cpf),rg: row.fetch(:rg),telefone: row.fetch(:telefone),endereco: row.fetch(:endereco),cep: row.fetch(:cep),valor: row.fetch(:valor),vencimento: row.fetch(:vencimento),cedente: row.fetch(:cedente),cnpj: row.fetch(:cnpj))
+			pessoa = Pessoa.create(nome: row.fetch(:nome),cpf: row.fetch(:cpf),rg: row.fetch(:rg),telefone: row.fetch(:telefone),endereco: row.fetch(:endereco),cep: row.fetch(:cep),valor: row.fetch(:valor),vencimento: row.fetch(:vencimento),cedente: row.fetch(:cedente),cnpj: row.fetch(:cnpj),empresa_id: id)
 		end
 		@info = Pessoa.all
 		redirect_to :controller => 'csv', :action => 'tabela' 
@@ -66,7 +67,7 @@ class CsvController < ApplicationController
 				# #NÃO PODE TIRAR O 'ENTER', POIS ELE FUNCIONA NO PDF
 				pdf.bounding_box([15, 200], :width => 540, :height => 100) do
 					cedente = ([[{:content =>"Cedente:
-					#{pessoa.cedente}", :colspan =>3}], [{:content =>"CNPJ:
+					#{pessoa.empresa.nome}", :colspan =>3}], [{:content =>"CNPJ:
 					#{pessoa.cnpj}", :colspan =>3}],["Data do Documento:
 					#{pessoa.vencimento}","Data do Processamento:
 					#{pessoa.vencimento}","Data do Vencimento:
@@ -81,5 +82,6 @@ class CsvController < ApplicationController
 				end		
 			end
 		end
+		redirect_to :controller => 'csv', :action => 'tabela'
 	end
 end

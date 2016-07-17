@@ -1,14 +1,16 @@
-<center>	
-<h1> Cadastrar arquivo CSV</h1>
+<center>
+	<h1> Cadastrar arquivo CSV</h1>
+	<legend>
+	</legend>
+	<%= form_for :pessoas , :url => {:controller => 'csv', :action => 'buscar_pessoas'}  do |f| %>
+		<div class="form-inline">
+			<%= f.label :arquivo, 'Selecione:' %>
+			<%= f.file_field :arquivo,:class => 'btn btn-default', :required => true %><br />
+			<%= f.select(:empresa_id, Empresa.all.collect {|e| [e.nome, e.id]}, { prompt: "Selecione a Empresa" },:class => 'btn btn-default', :required => true) %>
+			<br> <br>
+			<%= f.submit ' Cadastrar',:class => 'btn btn-default glyphicon glyphicon-plus' %>
+		</div><br>
+	<% end %>
+</center>
 <legend>
 </legend>
-<%= form_for :pessoas , :url => {:controller => 'csv', :action => 'buscar_pessoas'}  do |f| %>
-<div class="form-inline">
- <%= f.label :arquivo, 'Selecione:' %>
-   <%= f.file_field :arquivo,:class => 'btn btn-default', :required => true %><br />
-  <%= f.submit 'Cadastrar',:class => 'btn btn-default' %>
- </div>
-<% end %>
-</center>
-<br>
-<legend></legend>

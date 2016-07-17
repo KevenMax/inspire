@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Inspire</title>
+  <link rel="icon" type="image/ico"  href="/app/assets/images/i.ico" />
  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -29,19 +30,20 @@
     Opções <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-    <li><a><%= link_to 'Empresa', empresas_path %></a></li>
+    <li><a><%= link_to 'Cadastrar Empresa', empresas_path %></a></li>
     <li role="separator" class="divider"></li>
     <li> <a><%= link_to 'Enviar CSV', csv_index_path%></a></li>
     <li role="separator" class="divider"></li>
     <li><a><%= link_to 'Tabela', csv_tabela_path%></a></li>
     <li role="separator" class="divider"></li>
   </ul>
-</div>
+  </div>
   
 
    <a> <%= link_to 'Editar perfil', edit_usuario_registration_path, :class => 'btn btn-default' %></a> 
     <a><%= link_to "Sair", destroy_usuario_session_path, method: :delete, :class => 'btn btn-default'  %>
   <% else %> </a>
+    <a><%= link_to "Esqueceu sua senha?", new_password_path(resource_name),:class => 'btn btn-default' %></a>
     <a><%= link_to "Cadastrar-se", new_usuario_registration_path, :class => 'btn btn-default'  %></a> 
    <a> <%= link_to "Entrar", new_usuario_session_path, :class => 'btn btn-default'  %></a>
     
