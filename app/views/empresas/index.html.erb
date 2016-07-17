@@ -1,9 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Empresas</h1>
+<center>
+  <h1>Empresas 
+    <span class="badge">
+      <h6><%= "#{@empresas.count}"%></h6>
+    </span>
+  </h1>
+<br>
 
 <table class="table table-striped table-bordered">
-  <thead>
+  <thead class="alert alert-info">
     <tr>
       <th>Nome:</th>
       <th>Endereço:</th>
@@ -14,11 +20,11 @@
   <tbody>
     <% @empresas.each do |empresa| %>
       <tr>
-        <td><%= empresa.nome %></td>
-        <td><%= empresa.endereco %></td>
-        <td><%= link_to 'Visualizar', empresa %></td>
-        <td><%= link_to 'Editar', edit_empresa_path(empresa) %></td>
-        <td><%= link_to 'Apagar', empresa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><strong><%= empresa.nome %></strong></td>
+        <td><strong><%= empresa.endereco %></strong></td>
+        <td><center><%= link_to '  Visualizar', empresa, :class => 'glyphicon glyphicon-zoom-in btn btn-default' %></center></td>
+        <td><center><%= link_to '  Editar ', edit_empresa_path(empresa), :class => 'glyphicon glyphicon-pencil btn btn-default' %></center></td>
+        <td><center><%= link_to '  Apagar', empresa , :class => 'glyphicon glyphicon-trash btn btn-default' , method: :delete, data: { confirm: 'Você tem certeza?'} %></center></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +32,5 @@
 
 <br>
 
-<%= link_to 'Cadastrar nova empresa', new_empresa_path, :class => 'btn btn-default' %>
+<%= link_to ' Cadastrar', new_empresa_path, :class => 'btn btn-default glyphicon glyphicon-plus' %>
+</center>

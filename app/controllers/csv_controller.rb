@@ -20,6 +20,7 @@ class CsvController < ApplicationController
 			pessoa = Pessoa.create(nome: row.fetch(:nome),cpf: row.fetch(:cpf),rg: row.fetch(:rg),telefone: row.fetch(:telefone),endereco: row.fetch(:endereco),cep: row.fetch(:cep),valor: row.fetch(:valor),vencimento: row.fetch(:vencimento),cedente: row.fetch(:cedente),cnpj: row.fetch(:cnpj))
 		end
 		@info = Pessoa.all
+		redirect_to :controller => 'csv', :action => 'tabela' 
 	end
 
 	def criar_pdf

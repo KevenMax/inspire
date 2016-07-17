@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <center>  
-<h2>Cadastros (<%= "#{@info.count}"%>)</h2>
+  <h1>Cadastros
+   <span class="badge">
+      <h6><%= "#{@info.count}"%></h6>
+    </span>
+  </h1>
 </center>
+<br>
 
 <table class="table table-striped table-bordered">
   <thead class="alert alert-success">
@@ -38,10 +43,10 @@
     <% end %>
   </tbody>
 </table>
+<legend>
+</legend>
 
-<br>
-<h1>CSV ENVIADO!</h1>
-<p>Crie os pdf's:</p>
+<h4>Gerar todos PDF's:</h4>
 <%= form_for :pdf , :url => {:controller => 'csv', :action => 'criar_pdf'}  do |f| %>
-  <%= f.submit %>
+  <%= f.submit 'Gerar',:class => 'btn btn-default' %>
 <% end %>

@@ -1,4 +1,5 @@
 <%= form_for(@empresa) do |f| %>
+<div class="form-inline">
   <% if @empresa.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@empresa.errors.count, "error") %> prohibited this empresa from being saved:</h2>
@@ -12,14 +13,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :nome %><br>
-    <%= f.text_field :nome ,:required => true %>
+    <%= f.label :nome,'Nome:' %><br>
+    <%= f.text_field :nome ,:required => true, :class => 'form-control', :placeholder => 'Digite o nome' %>
   </div>
   <div class="field">
-    <%= f.label :endereco %><br>
-    <%= f.text_field :endereco, :required => true%>
+    <%= f.label :endereco,'Endereço:' %><br>
+    <%= f.text_field :endereco, :required => true, :class => 'form-control', :placeholder => 'Digite o endereço'%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Cadastrar", :class => 'btn btn-default' %>
+  </div>
   </div>
 <% end %>

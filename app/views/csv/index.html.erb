@@ -1,4 +1,12 @@
+<center>	
+<h1> Cadastrar arquivo CSV</h1>
+<legend>
+</legend>
 <%= form_for :pessoas , :url => {:controller => 'csv', :action => 'buscar_pessoas'}  do |f| %>
-  Selecione: <%= f.file_field :arquivo %><br />
-  <%= f.submit %>
+<div class="form-inline">
+ <%= f.label :arquivo, 'Selecione:' %>
+   <%= f.file_field :arquivo,:class => 'btn btn-default' %><br />
+  <%= f.submit 'Cadastrar',:class => 'btn btn-default' %>
+ </div>
 <% end %>
+</center>

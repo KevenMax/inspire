@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
-<table class="table table-striped table-bordered">
-	<thead>
+<table class="table table-bordered">
+	<thead class="alert-info">
   	<tr> 
   		<th>Nome:</th>
   		<th>Endereço:</th>
@@ -13,5 +13,6 @@
   </tr>
   </tbody>
 </table>
-<%= link_to 'Edit', edit_empresa_path(@empresa) %> |
-<%= link_to 'Back', empresas_path %>
+<center>
+<%= link_to ' Editar', edit_empresa_path(@empresa),:class => 'btn btn-default  glyphicon glyphicon-pencil' %>
+<%= link_to 'Voltar', empresas_path, :class => 'btn btn-default' %>

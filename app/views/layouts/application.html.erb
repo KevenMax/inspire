@@ -6,6 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -21,22 +22,21 @@
 
       <ul class="nav navbar-nav navbar-right">
 	<% if usuario_signed_in? %>
-  <div class="dropdown">
     <li class="navbar-brand">Logado como <strong><%= current_usuario.email %></strong></li>
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Opções
-    <span class="caret"></span>
+  
+  <div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Opções <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    
-    <li><a><%= link_to 'Tabela', csv_tabela_path, :class => 'btn btn-default' %> </a></li>
-    <li><a href="#">Outra ação</a></li>
-    <li><a href="#">Algo mais aqui</a></li>
+  <ul class="dropdown-menu">
+    <li><a><%= link_to 'Empresa', empresas_path %></a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#">Link separado</a></li>
+    <li> <a><%= link_to 'Enviar CSV', csv_index_path%></a></li>
+    <li role="separator" class="divider"></li>
+    <li><a><%= link_to 'Tabela', csv_tabela_path%></a></li>
+    <li role="separator" class="divider"></li>
   </ul>
 </div>
-    <a><%= link_to 'Enviar CSV', csv_index_path, :class => 'btn btn-default' %> </a> 
   
 
    <a> <%= link_to 'Editar perfil', edit_usuario_registration_path, :class => 'btn btn-default' %></a> 
