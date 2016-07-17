@@ -3,7 +3,7 @@
 <center>  
   <h1>Cadastros
    <span class="badge">
-      <h6><%= "#{@info.count}"%></h6>
+      <h5><%= "#{@info.count}"%></h5>
     </span>
   </h1>
 </center>
@@ -48,5 +48,5 @@
 
 <h4>Gerar todos PDF's:</h4>
 <%= form_for :pdf , :url => {:controller => 'csv', :action => 'criar_pdf'}  do |f| %>
-  <%= f.submit 'Gerar',:class => 'btn btn-default' %>
+  <%= f.submit ' Gerar', :class => 'glyphicon glyphicon-barcode btn btn-default' %>
 <% end %>

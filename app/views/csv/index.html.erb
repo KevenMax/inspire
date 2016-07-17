@@ -5,8 +5,10 @@
 <%= form_for :pessoas , :url => {:controller => 'csv', :action => 'buscar_pessoas'}  do |f| %>
 <div class="form-inline">
  <%= f.label :arquivo, 'Selecione:' %>
-   <%= f.file_field :arquivo,:class => 'btn btn-default' %><br />
+   <%= f.file_field :arquivo,:class => 'btn btn-default', :required => true %><br />
   <%= f.submit 'Cadastrar',:class => 'btn btn-default' %>
  </div>
 <% end %>
 </center>
+<br>
+<legend></legend>
