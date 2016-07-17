@@ -11,6 +11,7 @@ class CreatePessoas < ActiveRecord::Migration
       t.string :vencimento
       t.string :cedente
       t.string :cnpj
+      t.references :empresa, index: true, foreign_key: true
 
       t.timestamps null: false
     end

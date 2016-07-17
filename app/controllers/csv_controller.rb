@@ -5,7 +5,7 @@ class CsvController < ApplicationController
 	require "prawn/table"
 
 	def index
-
+		@empresa = Empresa.all
 	end
 
 	def tabela
@@ -13,11 +13,12 @@ class CsvController < ApplicationController
 	end
 
 	def buscar_pessoas
+		id = params[:pessoas][:empresa_id]
 		file = params[:pessoas][:arquivo].tempfile
 		subir = CSV.table(file)
 
 		subir.each do |row|
-			pessoa = Pessoa.create(nome: row.fetch(:nome),cpf: row.fetch(:cpf),rg: row.fetch(:rg),telefone: row.fetch(:telefone),endereco: row.fetch(:endereco),cep: row.fetch(:cep),valor: row.fetch(:valor),vencimento: row.fetch(:vencimento),cedente: row.fetch(:cedente),cnpj: row.fetch(:cnpj))
+			pessoa = Pessoa.create(nome: row.fetch(:nome),cpf: row.fetch(:cpf),rg: row.fetch(:rg),telefone: row.fetch(:telefone),endereco: row.fetch(:endereco),cep: row.fetch(:cep),valor: row.fetch(:valor),vencimento: row.fetch(:vencimento),cedente: row.fetch(:cedente),cnpj: row.fetch(:cnpj),empresa_id: id)
 		end
 		@info = Pessoa.all
 		redirect_to :controller => 'csv', :action => 'tabela' 
