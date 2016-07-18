@@ -1,52 +1,102 @@
-<p id="notice"><%= notice %></p>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="navigation" class="active"><a href="#ativos" aria-controls="ativos" role="tab" data-toggle="tab">Clientes ativos</a></li>
+  <li role="navigation"><a href="#pendentes" aria-controls="pendentes" role="tab" data-toggle="tab">Clientes com pendencias</a></li>
+</ul>
 
-<center>  
-  <h1>Cadastros
-   <span class="badge">
-      <h5><%= "#{@info.count}"%></h5>
-    </span>
-  </h1>
-</center>
-<br>
+<div class="tab-content"  >
+  <div role="tabpanel" class="tab-pane active" id="ativos">
+    <center>  
+    <h4 class="alert-success"><%= notice %><h4>
+      <h1>Cadastros
+       <span class="badge">
+          <h5><%= "#{@info.count}"%></h5>
+        </span>
+      </h1>
+    </center>
+    <br>
+    <%@erro%>
+    <table class="table table-striped table-bordered">
+      <thead class="alert alert-success">
+        <tr>
+          <th>Nome:</th>
+          <th>CPF:</th>
+          <th>RG:</th>
+          <th>Telefone:</th>
+          <th>Endereço:</th>
+          <th>CEP:</th>
+          <th>Valor:</th>
+          <th>Vencimento:</th>
+          <th>Cedente:</th>
+          <th>CNPJ:</th>
+        </tr>
+      </thead>
 
-<table class="table table-striped table-bordered">
-  <thead class="alert alert-success">
-    <tr>
-      <th>Nome:</th>
-      <th>CPF:</th>
-      <th>RG:</th>
-      <th>Telefone:</th>
-      <th>Endereço:</th>
-      <th>CEP:</th>
-      <th>Valor:</th>
-      <th>Vencimento:</th>
-      <th>Cedente:</th>
-      <th>CNPJ:</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @info.each do |info| %>
-      <tr>
-        <td><%= info.nome %></td>
-        <td><%= info.cpf %></td>
-        <td><%= info.rg %></td>
-        <td><%= info.telefone %></td>
-        <td><%= info.endereco %></td>
-        <td><%= info.cep %></td>
-        <td><%= info.valor %></td>
-        <td><%= info.vencimento %></td>
-        <td><%= info.empresa.nome %></td>
-        <td><%= info.cnpj %></td>
-        
-      </tr>
+      <tbody>
+        <% @info.each do |info| %>
+          <tr>
+            <td><%= info.nome %></td>
+            <td><%= info.cpf %></td>
+            <td><%= info.rg %></td>
+            <td><%= info.telefone %></td>
+            <td><%= info.endereco %></td>
+            <td><%= info.cep %></td>
+            <td><%= info.valor %></td>
+            <td><%= info.vencimento %></td>
+            <td><%= info.empresa.nome %></td>
+            <td><%= info.cnpj %></td>          
+          </tr>
+        <% end %>
+      </tbody>
+    </table>    
+    <h4>Gerar todos PDF's:</h4>
+    <%= form_for :pdf , :url => {:controller => 'csv', :action => 'criar_pdf'}  do |f| %>
+      <%= f.submit ' Gerar', :class => 'glyphicon glyphicon-barcode btn btn-default' %>
     <% end %>
-  </tbody>
-</table>
-<legend>
-</legend>
+    <br><br>
+  </div>
 
-<h4>Gerar todos PDF's:</h4>
-<%= form_for :pdf , :url => {:controller => 'csv', :action => 'criar_pdf'}  do |f| %>
-  <%= f.submit ' Gerar', :class => 'glyphicon glyphicon-barcode btn btn-default' %>
-<% end %>
+    <div role="tabpanel" class="tab-pane" id="pendentes">
+      <center>  
+        <h4 class="alert-success"><%= notice %><h4>
+        <h1>Cadastros Inválidos
+          <span class="badge">
+            <h5><%= "#{@inv.count}"%></h5>
+          </span>
+        </h1>
+      </center>
+      <table class="table table-striped table-bordered">
+        <thead class="alert alert-danger">
+          <tr>
+            <th>Nome:</th>
+            <th>CPF:</th>
+            <th>RG:</th>
+            <th>Telefone:</th>
+            <th>Endereço:</th>
+            <th>CEP:</th>
+            <th>Valor:</th>
+            <th>Vencimento:</th>
+            <th>Cedente:</th>
+            <th>CNPJ:</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @inv.each do |info| %>
+            <tr>
+              <td><%= info.nome %></td>
+              <td><%= info.cpf %></td>
+              <td><%= info.rg %></td>
+              <td><%= info.telefone %></td>
+              <td><%= info.endereco %></td>
+              <td><%= info.cep %></td>
+              <td><%= info.valor %></td>
+              <td><%= info.vencimento %></td>
+              <td><%= info.empresa.nome %></td>
+              <td><%= info.cnpj %></td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table> 
+  </div>
+</div>
+
