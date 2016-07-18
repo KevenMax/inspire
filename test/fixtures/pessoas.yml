@@ -7,11 +7,13 @@ one:
   telefone: MyString
   endereco: MyString
   cep: MyString
+  email: MyString
   valor: MyString
   vencimento: MyString
   cedente: MyString
   cnpj: MyString
   empresa_id: 
+  ativo: false
 
 two:
   nome: MyString
@@ -20,8 +22,10 @@ two:
   telefone: MyString
   endereco: MyString
   cep: MyString
+  email: MyString
   valor: MyString
   vencimento: MyString
   cedente: MyString
   cnpj: MyString
   empresa_id: 
+  ativo: false
