@@ -8,9 +8,17 @@ class CsvController < ApplicationController
 		@empresa = Empresa.all
 	end
 
+	def sel_empresa
+	end
+
+	def empresa_tabela
+		@sel_empresa = params[:empresa][:empresa_id]
+		@cod = Pessoa.select(:codigo, :created_at, :empresa_id).where(:empresa_id => @sel_empresa).group_by(&:codigo)
+	end
+
 	def tabela
-		@info = Pessoa.where("ativo= ?", true)
-		@inv = Pessoa.where("ativo= ?", false)
+		@info = Pessoa.where("ativo= ? and codigo=?", 'true', @cod)
+		@inv = Pessoa.where("ativo= ? and codigo=?", 'false', @cod)
 	end
 
 	def buscar_pessoas

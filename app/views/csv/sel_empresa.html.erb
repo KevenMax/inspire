@@ -1,0 +1,8 @@
+<%= form_for :empresa , :url => {:controller => 'csv', :action => 'empresa_tabela'}  do |f| %>
+		<div class="form-inline">
+			<%= f.label 'Selecione:' %>
+			<%= f.select(:empresa_id, Empresa.all.collect {|e| [e.nome, e.id]}, { prompt: "Selecione a Empresa" },:class => 'btn btn-default', :required => true) %>
+			<br> <br>
+			<%= f.submit 'Ver',:class => 'btn btn-default glyphicon glyphicon-plus' %>
+		</div><br>
+	<% end %>
