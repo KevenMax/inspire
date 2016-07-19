@@ -40,7 +40,6 @@ class CsvController < ApplicationController
 					cep: row.fetch(:cep),
 					valor: row.fetch(:valor),
 					vencimento: row.fetch(:vencimento),
-					cedente: row.fetch(:cedente),
 					cnpj: row.fetch(:cnpj),
 					email: row.fetch(:email),
 					ativo:  true,
@@ -56,7 +55,6 @@ class CsvController < ApplicationController
 					cep: row.fetch(:cep),
 					valor: row.fetch(:valor),
 					vencimento: row.fetch(:vencimento),
-					cedente: row.fetch(:cedente),
 					cnpj: row.fetch(:cnpj),
 					email: row.fetch(:email),
 					ativo:  false,
@@ -139,5 +137,9 @@ class CsvController < ApplicationController
 		end
 		flash[:notice] = "PDF's gerados com sucesso dentro do diretório 'Documentos'!"
 		redirect_to :controller => 'csv', :action => 'tabela'
+	end
+
+	def criar_pdf_separado
+			
 	end
 end

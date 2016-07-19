@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs" role="tablist">
-  <li role="navigation" class="active"><a href="#ativos" aria-controls="ativos" role="tab" data-toggle="tab">Clientes ativos</a></li>
-  <li role="navigation"><a href="#pendentes" aria-controls="pendentes" role="tab" data-toggle="tab">Clientes com pendencias</a></li>
+  <li role="navigation" class="active"><a href="#ativos" aria-controls="ativos" role="tab" data-toggle="tab"><b>Clientes Ativos</b></a></li>
+  <li role="navigation"><a href="#pendentes" aria-controls="pendentes" role="tab" data-toggle="tab"><b>Clientes com Pendências</b></a></li>
 </ul>
 
 <div class="tab-content"  >
@@ -48,7 +48,7 @@
         <% end %>
       </tbody>
     </table>    
-    <h4>Gerar todos PDF's:</h4>
+    <h4>Gerar todos PDF's para impressão:</h4>
     <%= form_for :pdf , :url => {:controller => 'csv', :action => 'criar_pdf'}  do |f| %>
       <%= f.submit ' Gerar', :class => 'glyphicon glyphicon-barcode btn btn-default' %>
     <% end %>
@@ -64,6 +64,7 @@
           </span>
         </h1>
       </center>
+      <br>
       <table class="table table-striped table-bordered">
         <thead class="alert alert-danger">
           <tr>
