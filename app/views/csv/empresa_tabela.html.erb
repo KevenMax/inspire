@@ -1,1 +1,20 @@
-<h1>Oi</h1>
+<table class="table table-striped table-bordered">
+  <thead class="alert alert-success">
+    <tr>
+      <th>Código:</th>
+      <th>Data do Envio:</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cod.each_pair do |cod_key, cod_value| %>
+      <tr>
+        <td><%= cod_key %></td>
+        <% cod_value.each do |c|%>          
+      	<td><%=c.created_at%></td>
+      </tr>
+      <%end%>
+    <% end %>
+  </tbody>
+</table>    
+   
