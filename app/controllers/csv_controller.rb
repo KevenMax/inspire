@@ -17,8 +17,8 @@ class CsvController < ApplicationController
 	end
 
 	def tabela
-		@info = Pessoa.where("ativo= ? and codigo=?", 'true', @cod)
-		@inv = Pessoa.where("ativo= ? and codigo=?", 'false', @cod)
+		@info = Pessoa.where("ativo= ? and codigo=?", 'true', cod_key)
+		@inv = Pessoa.where("ativo= ? and codigo=?", 'false', cod_key)
 	end
 
 	def buscar_pessoas

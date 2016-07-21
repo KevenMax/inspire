@@ -1,8 +1,17 @@
+<center>
+  <h1>Arquivos Enviados
+    <span class="badge">
+      <h5><%= "#{@cod.count}"%></h5>
+    </span>
+  </h1>
+</center>
+<br>
 <table class="table table-striped table-bordered">
   <thead class="alert alert-success">
     <tr>
       <th>Código:</th>
       <th>Data do Envio:</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -11,8 +20,8 @@
       <tr>
         <td><%= cod_key %></td>
         <td><%= cod_value[0].created_at %></td>
+        <td><%= link_to '', csv_tabela_path(cod_key), :class => 'glyphicon glyphicon-zoom-in btn btn-default' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>    
-   
